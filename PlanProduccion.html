@@ -1,65 +1,118 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Mi página web</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-	<!-- Agrega cualquier otra hoja de estilos que necesites -->
-    
-</head>
-
-<body>
+  <head>
+    <title>Pagina del caso de uso "Plan de Produccion"</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/Index.css" type="text/css">
+    <!-- Agrega cualquier otra hoja de estilos que necesites -->
+  </head>
+  <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">CartonBol</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
-            </li>
-          </ul>
-        </div>
+      <a class="navbar-brand" href="MenuPrincipal.html">CartonBol</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="MenuPrincipal.html">Menu Principal <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
     </nav>
 
     <div class="container my-4"></div>
-
-        <div class="container">
-            <form>
-                <div class="form-group">
-                    <label for="codigo">Código del plan de producción:</label>
-                    <input type="text" class="form-control" id="codigo" placeholder="Introduce el código">
-                </div>
-          
-            <div class="form-group">
-                <label for="cantidad">Cantidad del producto a fabricar:</label>
-                <input type="text" class="form-control" id="cantidad" placeholder="Introduce la cantidad">
-            </div>
-          
-            <div class="form-group">
-                <label for="materia-prima">Cantidad mínima de materia prima requerida:</label>
-                <input type="text" class="form-control" id="materia-prima" placeholder="Introduce la cantidad mínima">
-            </div>
-
-            <div class="form-group">
-                <label for="horas-necesarias">Horas necesarias para concluir el plan de produccion:</label>
-                <input type="text" class="form-control" id="horas" placeholder="Introduce las horas">
-            </div>
-
-            <div class="form-group">
-                <label for="fecha-inicio">Fecha en la que se inicia el plan de produccion:</label>
-                <input type="text" class="form-control" id="fecha-inicio" placeholder="Introduce la fecha">
-            </div>
-
-            <div class="form-group">
-                <label for="fecha-termino">Fecha en la que se termina el plan de produccion:</label>
-                <input type="text" class="form-control" id="fecha-termino" placeholder="Introduce la fecha">
-            </div>
-
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </form>
+    <div class="container">
+      <form>
+        <h3 class="titulo-comun">Registro o actualización del plan de producción</h3>
+    
+        <div class="form-group">
+          <label for="codigoPlanProduccion">Código del plan de producción:</label>
+          <input type="text" class="form-control registro-planProduccion">
         </div>
+    
+        <table class="table" id="tabla-producto-planProduccion">
+          <thead>
+            <tr>
+              <th class="titulo-tabla">Código del producto</th>
+              <th class="titulo-tabla">Cantidad del producto a fabricar</th>
+              <th class="titulo-tabla">Unidad de medida del producto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" class="form-control registro-planProduccion" name="codigo-producto-planProduccion[]"></td>
+              <td><input type="text" class="form-control registro-planProduccion" name="cantidad-producto-planProduccion[]"></td>
+              <td><input type="text" class="form-control registro-planProduccion" name="unidadMedida-producto-PlanProduccion[]"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="btn-container">
+          <button type="button" class="btn btn-agregar-fila" onclick="agregarFila('tabla-producto-planProduccion', ['codigo-producto-planProduccion', 'cantidad-producto-planProduccion', 'unidadMedida-producto-PlanProduccion'])">Agregar fila</button>
+        </div>
+
+        <table class="table" id="tabla-materiaPrima-planProduccion">
+          <thead>
+            <tr>
+              <th class="titulo-tabla">Código de materia prima</th>
+              <th class="titulo-tabla">Cantidad mínima requerida</th>
+              <th class="titulo-tabla">Unidad de medida de la materia prima</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" class="form-control registro-planProduccion" name="codigo-materiaPrima-planProduccion[]"></td>
+              <td><input type="text" class="form-control registro-planProduccion" name="cantidad-materiaPrima-planProduccion[]"></td>
+              <td><input type="text" class="form-control registro-planProduccion" name="unidadMedida-materiaPrima-planProduccion[]"></td>            
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="btn-container">
+          <button type="button" class="btn btn-agregar-fila" onclick="agregarFila('tabla-materiaPrima-planProduccion', ['codigo-materiaPrima-planProduccion', 'cantidad-materiaPrima-planProduccion', 'unidadMedida-materiaPrima-planProduccion'])">Agregar fila</button>
+        </div>
+
+        <div class="form-group">
+          <label for="horas-necesariasPlanProduccion">Horas necesarias para concluir el plan de produccion:</label>
+          <input type="text" class="form-control registro-planProduccion">
+        </div>
+
+        <div class="form-group">
+          <label for="fecha-inicioPlanProduccion">Fecha en la que se inicia el plan de produccion:</label>
+          <input type="text" class="form-control registro-planProduccion">
+        </div>
+
+        <div class="form-group">
+          <label for="fecha-termino">Fecha en la que se termina el plan de produccion:</label>
+          <input type="text" class="form-control registro-planProduccion">
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="btn-registrar-planProduccion" style="display: inline-block;">Registrar plan de produccion</button>
+        <button type="submit" class="btn btn-primary" id="btn-actualizar-planProduccion" style="display: inline-block; margin-left: 40px;">Actualizar plan de produccion</button>
+        
+        <h3 class="titulo-comun">Buscar plan de producción</h3>
+
+        <div class="form-group">
+          <label for="buscar-planProduccion">Codigo del plan de produccion:</label>
+          <input type="text" class="form-control buscar-planProduccion" id="buscar-planProduccion">
+        </div>
+              
+        <button type="submit" class="btn btn-primary" id="btn-buscar-planProduccion">Buscar plan de producción</button>     
+          
+        <h3 class="titulo-comun">Eliminar plan de producción</h3>
+
+        <div class="form-group">
+          <label for="eliminar-planProduccion">Codigo del plan de produccion:</label>
+          <input type="text" class="form-control eliminar-planProduccion" id="eliminar-planProduccion">
+        </div>
+        <button type="submit" class="btn btn-primary" id="btn-eliminar-planProduccion">Eliminar plan de producción</button>              
+      
+      </form>
     </div>
+  </div>
+    
+  <script src="js/PlanProduccion.js"></script>
 </body>
